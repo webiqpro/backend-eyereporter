@@ -4,8 +4,12 @@ const cors = require("cors");
 const app = express();
 
 // Middleware
-app.use(cors());           // Allow cross-origin requests (frontend-backend)
-app.use(express.json());   // Parse JSON request bodies
+app.use(cors());
+app.use(express.json());
 
-// Export app so server.js can use it
+// Test route
+app.get("/", (req, res) => {
+  res.send("Eye Reporter Backend is running!");
+});
+
 module.exports = app;
