@@ -1,6 +1,6 @@
 # Eye Reporter – Backend (Node.js & Express)
 ________________________________________________________________________________
-# WEEK 2 UPDATES
+# Progressive Updates
 
 **1. Make sure front-end and backend are well communicating**
 **2. make sure the each report has a severity level or category**
