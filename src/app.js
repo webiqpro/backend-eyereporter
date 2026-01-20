@@ -1,21 +1,35 @@
+/**
+ * App Configuration
+ */
+
 const express = require("express");
 const cors = require("cors");
+const reportRoutes = require("./route/reportRoutes");
 
 const app = express();
 
-// made a change on this branch in regards branching
+// CORS configuration – allow ONLY frontend localhost:3000
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "https://your-frontend-domain.com"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true
+  })
+);
 
-const testFunc = (testNo)=>{
-  console.log(testNo)
-}
-
-// Middleware
-app.use(cors());
 app.use(express.json());
 
-// Test route
+// Routes
+app.use("/api", reportRoutes);
+
+// Default route
 app.get("/", (req, res) => {
-  res.send("Eye Reporter Backend is running!");
+  res.send("Eye Reporter Backend is running");
 });
+
 
 module.exports = app;
