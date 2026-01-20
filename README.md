@@ -1,4 +1,14 @@
 # Eye Reporter – Backend (Node.js & Express)
+________________________________________________________________________________
+# WEEK 2 UPDATES
+
+**1. Make sure front-end and backend are well communicating**
+**2. make sure the each report has a severity level or category**
+**3. Add a functionality for users to upvote/downvote the reported issue**
+**1. Add a route to upload a video**
+
+_______________________________________________________________________________
+
 
 ## 1. Project Overview
 
