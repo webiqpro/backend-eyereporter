@@ -4,7 +4,7 @@
 
 const express = require("express");
 const cors = require("cors");
-const reportRoutes = require("./route/reportRoutes");
+const reportRoutes = require("./routes/reportRoutes");
 
 const app = express();
 
@@ -13,7 +13,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://your-frontend-domain.com"
+      "https://eye-reporter-frontend.vercel.app",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -30,6 +30,5 @@ app.use("/api", reportRoutes);
 app.get("/", (req, res) => {
   res.send("Eye Reporter Backend is running");
 });
-
 
 module.exports = app;
