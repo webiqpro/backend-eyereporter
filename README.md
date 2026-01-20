@@ -1,6 +1,6 @@
 # Eye Reporter – Backend (Node.js & Express)
 ________________________________________________________________________________
-# Progressive Updates
+# Progressive Updates 2nd sprint
 
 **1. Make sure front-end and backend are well communicating**
 **2. make sure the each report has a severity level or category**
