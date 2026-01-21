@@ -1,32 +1,34 @@
-/**
- * App Configuration
- */
-
 const express = require("express");
 const cors = require("cors");
-const reportRoutes = require("./routes/reportRoutes");
+const reportRoutes = require("../src/routes/reportRoutes");
 
 const app = express();
 
-// CORS configuration – allow ONLY frontend localhost:3000
+/**
+ * Middleware
+ */
 app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://front-end-eyereporter.vercel.app/",
+      "https://front-end-eyereporter.vercel.app",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true
+    credentials: true,
   })
 );
 
 app.use(express.json());
 
-// Routes
+/**
+ * Routes
+ */
 app.use("/api", reportRoutes);
 
-// Default route
+/**
+ * Default Route
+ */
 app.get("/", (req, res) => {
   res.send("Eye Reporter Backend is running");
 });
