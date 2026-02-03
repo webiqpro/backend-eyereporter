@@ -45,16 +45,8 @@ const createReport = async (req, res) => {
 // Get all reports
 const getReports = async (req, res) => {
   try {
-    const { category } = req.query;
-
-    const filter = category ? { category } : {};
-    const reports = await Report.find(filter).sort({ createdAt: -1 });
-
-    res.status(200).json({
-      success: true,
-      count: reports.length,
-      data: reports,
-    });
+    const reports = await Report.find();
+    res.status(200).json(reports);
   } catch (err) {
     res.status(500).json({
       success: false,
@@ -66,22 +58,10 @@ const getReports = async (req, res) => {
 // Get report by ID
 const getReportById = async (req, res) => {
   try {
-    const { id } = req.params;
-
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({
-        success: false,
-        message: "Invalid report ID",
-      });
-    }
-
-    const report = await Report.findById(id);
+    const report = await Report.findById(req.params.id);
 
     if (!report) {
-      return res.status(404).json({
-        success: false,
-        message: "Report not found",
-      });
+      return res.status(404).json({ success: false, message: "Report not found" });
     }
 
     res.status(200).json({
@@ -99,25 +79,14 @@ const getReportById = async (req, res) => {
 // Update report
 const updateReport = async (req, res) => {
   try {
-    const { id } = req.params;
-
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({
-        success: false,
-        message: "Invalid report ID",
-      });
-    }
-
-    const report = await Report.findByIdAndUpdate(id, req.body, {
-      new: true,
-      runValidators: true,
-    });
+    const report = await Report.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
 
     if (!report) {
-      return res.status(404).json({
-        success: false,
-        message: "Report not found",
-      });
+      return res.status(404).json({ success: false, message: "Report not found" });
     }
 
     res.status(200).json({
@@ -135,28 +104,13 @@ const updateReport = async (req, res) => {
 // Delete report
 const deleteReport = async (req, res) => {
   try {
-    const { id } = req.params;
-
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({
-        success: false,
-        message: "Invalid report ID",
-      });
-    }
-
-    const report = await Report.findByIdAndDelete(id);
+    const report = await Report.findByIdAndDelete(req.params.id);
 
     if (!report) {
-      return res.status(404).json({
-        success: false,
-        message: "Report not found",
-      });
+      return res.status(404).json({ success: false, message: "Report not found" });
     }
 
-    res.status(200).json({
-      success: true,
-      message: "Report deleted successfully",
-    });
+    res.status(200).json({ success: true, message: "Report deleted successfully" });
   } catch (err) {
     res.status(500).json({
       success: false,

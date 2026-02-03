@@ -35,6 +35,16 @@ const reportSchema = new mongoose.Schema(
       type: [String],
       default: [],
     },
+    images: [
+      {
+        type: String,
+      },
+    ],
+    videos: [
+      {
+        type: String,
+      },
+    ],
   },
   {
     timestamps: true,
