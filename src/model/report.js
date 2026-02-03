@@ -19,6 +19,16 @@ const reportSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    images: [
+      {
+        type: String,
+      },
+    ],
+    videos: [
+      {
+        type: String,
+      },
+    ],
   },
   { timestamps: true }
 );
